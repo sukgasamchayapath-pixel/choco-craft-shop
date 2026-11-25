@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHOCO CRAFT | คราฟต์ช็อกโกแลตแท้พรีเมียม</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">🍫 CHOCO CRAFT</div>
+    <nav>
+      <a href="#products">สินค้าของเรา</a>
+      <a href="#order">สั่งซื้อสินค้า</a>
+      <a href="admin.html" class="admin-link">📦 ระบบหยิบ & แพ็คสินค้า</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>สัมผัสความเข้มข้นของคราฟต์ช็อกโกแลตแท้</h1>
+      <p>คัดสรรเมล็ดโกโก้คุณภาพเยี่ยม คั่วบดอย่างพิถีพิถัน ส่งตรงความอร่อยถึงหน้าบ้านคุณ</p>
+      <a href="#products" class="btn-primary">เลือกซื้อช็อกโกแลต</a>
+    </div>
+    <div class="hero-image">
+      <img src="images/hero-banner.jpg" alt="Choco Craft Banner" onerror="this.src='https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600'">
+    </div>
+  </section>
+
+  <section id="products" class="products-section">
+    <h2>เลือกความอร่อยที่คุณชอบ (2 SKUs)</h2>
+    <div class="product-grid">
+      <!-- SKU 1 -->
+      <div class="product-card">
+        <span class="sku-badge">SKU: CHOCO-DK70</span>
+        <img src="images/choco-dark.jpg" alt="Dark Chocolate 70%" onerror="this.src='https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400'">
+        <h3>70% Single Origin Dark Chocolate</h3>
+        <p>ดาร์กช็อกโกแลตเข้มข้น 70% หอมกลิ่นผลไม้ตระกูลเบอร์รี่ หวานน้อย (ขนาด 100g)</p>
+        <div class="price">฿180 / แท่ง</div>
+        <div class="qty-control">
+          <label>จำนวน:</label>
+          <input type="number" id="qty-dk70" value="1" min="0" max="50" onchange="calculateTotal()">
+        </div>
+      </div>
+
+      <!-- SKU 2 -->
+      <div class="product-card">
+        <span class="sku-badge">SKU: CHOCO-MKHZ</span>
+        <img src="images/choco-milk.jpg" alt="Milk Chocolate Hazelnut" onerror="this.src='https://images.unsplash.com/photo-1511381939415-e44015466834?w=400'">
+        <h3>Creamy Milk Chocolate & Roasted Hazelnut</h3>
+        <p>มิลค์ช็อกโกแลตเนื้อนุ่มละมุน ผสมถั่วเฮเซลนัทอบกรอบเต็มคำ (ขนาด 100g)</p>
+        <div class="price">฿195 / แท่ง</div>
+        <div class="qty-control">
+          <label>จำนวน:</label>
+          <input type="number" id="qty-mkhz" value="0" min="0" max="50" onchange="calculateTotal()">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order" class="order-section">
+    <div class="order-box">
+      <h2>กรอกข้อมูลจัดส่ง</h2>
+      <div class="summary-box">
+        <p>สรุปรายการสั่งซื้อ: <span id="order-summary-text">[CHOCO-DK70] 70% Dark Chocolate x 1</span></p>
+        <h3>ยอดรวมทั้งสิ้น: <span id="total-price">180</span> บาท</h3>
+      </div>
+
+      <form id="orderForm">
+        <div class="form-group">
+          <label>ชื่อ-นามสกุล ผู้รับ *</label>
+          <input type="text" id="customerName" required placeholder="เช่น นายสมชาย ใจดี">
+        </div>
+        <div class="form-group">
+          <label>เบอร์โทรศัพท์ *</label>
+          <input type="tel" id="phone" required placeholder="เช่น 0812345678">
+        </div>
+        <div class="form-group">
+          <label>ที่อยู่สำหรับจัดส่ง (พร้อมรหัสไปรษณีย์) *</label>
+          <textarea id="address" rows="3" required placeholder="บ้านเลขที่, ถนน, ตำบล/แขวง, อำเภอ/เขต, จังหวัด, รหัสไปรษณีย์"></textarea>
+        </div>
+        <button type="submit" id="submitBtn" class="btn-primary full-width">ยืนยันการสั่งซื้อ</button>
+      </form>
+      <div id="statusMessage" class="status-msg"></div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

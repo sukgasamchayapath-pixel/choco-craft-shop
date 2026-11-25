@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ระบบหยิบสินค้า แพ็คสินค้า & จ่าหน้าพัสดุ | CHOCO CRAFT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+  <header class="navbar no-print">
+    <div class="logo">📦 ระบบหยิบและแพ็คสินค้า (Pick, Pack & Ship)</div>
+    <nav>
+      <button onclick="loadOrders()" class="btn-secondary">🔄 รีเฟรชข้อมูลจาก Google Sheet</button>
+      <a href="index.html">กลับหน้าร้าน</a>
+    </nav>
+  </header>
+
+  <main class="admin-container no-print">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <h2>รายการคำสั่งซื้อทั้งหมด</h2>
+      <div>
+        <label>กรองสถานะ: </label>
+        <select id="statusFilter" onchange="renderOrders()" style="padding:6px 10px; border-radius:6px;">
+          <option value="ALL">ทั้งหมด</option>
+          <option value="รอดำเนินการ">รอดำเนินการ (รอหยิบ/แพ็ค)</option>
+          <option value="กำลังหยิบสินค้า">กำลังหยิบสินค้า</option>
+          <option value="แพ็คเสร็จแล้ว">แพ็คเสร็จแล้ว</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="loading" class="loading">กำลังดึงข้อมูลจาก Google Sheets...</div>
+    <div id="ordersList" class="orders-grid"></div>
+  </main>
+
+  <!-- พื้นที่สำหรับพิมพ์ใบจ่าหน้าพัสดุ (แสดงเฉพาะตอนกดพิมพ์) -->
+  <div id="printArea" class="print-only"></div>
+
+  <script src="app.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", loadOrders);
+  </script>
+</body>
+</html>
